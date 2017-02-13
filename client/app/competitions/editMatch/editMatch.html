@@ -1,0 +1,59 @@
+<md-dialog aria-label="Add match"  ng-cloak>
+  <form name="addMatchForm">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Edit match</h2>
+        <span flex></span>
+        <md-button ng-click="closeDialog()">
+          X
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <h2>{{match.home.name}}</h2>
+        <div layout-gt-sm="row">
+          <md-input-container>
+              <label>Touchdown</label>
+              <input ng-model="match.home.score.td" type="number" ng-change="updatePoints()" required>
+          </md-input-container>
+          <md-input-container>
+              <label>Casulties</label>
+              <input ng-model="match.home.score.cas" type="number" required>
+          </md-input-container>
+          <md-input-container>
+              <label>Points</label>
+              <input name="homePoints" ng-model="match.home.score.points" type="number" required>
+          </md-input-container>
+        </div>
+        <h2>{{match.away.name}}</h2>
+        <div layout-gt-sm="row">
+          <md-input-container>
+              <label>Touchdown</label>
+              <input ng-model="match.away.score.td" type="number" ng-change="updatePoints()" required>
+          </md-input-container>
+          <md-input-container>
+              <label>Casulties</label>
+              <input ng-model="match.away.score.cas" type="number" required>
+          </md-input-container>
+          <md-input-container>
+              <label>Points</label>
+              <input name="awayPoints" ng-model="match.away.score.points" type="number" required>
+          </md-input-container>
+        </div>
+        <span ng-show="(addMatchForm.homePoints.$touched && addMatchForm.awayPoints.$touched && (match.home.score.points + match.away.score.points) == 0) || pointsEqualZero">
+          Points total needs to be more then 0.</span>
+        <hr>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <md-button ng-click="closeDialog()">
+        Cancel
+      </md-button>
+      <span flex></span>
+      <md-button ng-disabled="addMatchForm.$invalid" class="md-raised md-primary" ng-click="saveMatch()" style="margin-right:20px;">
+        Save
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

@@ -1,0 +1,53 @@
+<md-dialog aria-label="Add match"  ng-cloak>
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Add match</h2>
+        <span flex></span>
+        <md-button ng-click="closeDialog()">
+          X
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <div layout-gt-sm="row">
+          <md-input-container>
+            <label>Home team</label>
+            <md-select placeholder="Home team" ng-model="newMatch.h_team" ng-model-options="{trackBy: '$value.name'}"
+                       md-on-open="loadPlayers()" style="min-width: 200px;">
+              <md-option ng-value="h_player" ng-repeat="h_player in players">{{h_player.name}}</md-option>
+            </md-select>
+          </md-input-container>
+          <md-input-container>
+              <label>Home team score</label>
+              <input ng-model="newMatch.hScore" type="number">
+          </md-input-container>
+          <md-input-container>
+            <label>Away team</label>
+            <md-select placeholder="Away team" ng-model="newMatch.a_team" ng-model-options="{trackBy: '$value.name'}"
+                       md-on-open="loadPlayers()" style="min-width: 200px;">
+              <md-option ng-value="a_player" ng-repeat="a_player in players">{{a_player.name}}</md-option>
+            </md-select>
+          </md-input-container>
+          <md-input-container>
+              <label>Away team score</label>
+              <input ng-model="newMatch.aScore" type="number">
+          </md-input-container>
+        </div>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <md-button ng-click="closeDialog()">
+        Cancel
+      </md-button>
+      <span flex></span>
+      <md-checkbox ng-model="addAnother" aria-label="Add another checkbox">
+        Add another
+      </md-checkbox>
+      <md-button class="md-raised md-primary" ng-click="addNewMatch()" style="margin-right:20px;">
+        Add match
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
