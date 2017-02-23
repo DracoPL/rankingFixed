@@ -29,6 +29,8 @@
     "express-jwt": "^5.0.0",
     "express-session": "^1.11.3",
     "fast-json-patch": "^1.0.0",
+    "flightplan": "^0.6.15",
+    "fly": "^2.0.4",
     "font-awesome": ">=4.1.0",
     "jsonwebtoken": "^7.0.0",
     "lodash": "^4.6.1",

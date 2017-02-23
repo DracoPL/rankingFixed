@@ -474,6 +474,7 @@ gulp.task('build', cb => {
         [
             'copy:extras',
             'copy:assets',
+            'copy:views',
             'copy:fonts:dist',
             'copy:server',
             'webpack:dist'
@@ -543,6 +544,11 @@ gulp.task('copy:fonts:dist', () => {
     return gulp.src('node_modules/{bootstrap,font-awesome}/fonts/*')
         .pipe(flatten())
         .pipe(gulp.dest(`${paths.dist}/${clientPath}/assets/fonts`));
+});
+
+gulp.task('copy:views', () => {
+    return gulp.src([paths.client.views])
+        .pipe(gulp.dest(`${paths.dist}/${clientPath}`));
 });
 
 gulp.task('copy:assets', () => {
